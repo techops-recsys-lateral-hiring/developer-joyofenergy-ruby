@@ -1,9 +1,8 @@
 require 'sinatra/base'
 require 'json'
 
+require_relative 'controller/meter_reading_controller'
+
 class JOIEnergy < Sinatra::Base
-  get '/readings/read/smart-meter-0' do
-    content_type :json
-    { "reading" => "cheese" }.to_json
-  end
+  use MeterReadingController
 end
