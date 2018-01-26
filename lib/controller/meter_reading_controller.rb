@@ -1,15 +1,5 @@
 require 'sinatra/base'
 
-class MeterReadingService
-
-end
-
-module Wiring
-  def meter_reading_service
-    @meter_reading_service ||= MeterReadingService.new
-  end
-end
-
 class MeterReadingController < Sinatra::Base
   before do
     if request.body.length > 0
@@ -18,9 +8,9 @@ class MeterReadingController < Sinatra::Base
     end
   end
   
-  get '/readings/read/smart-meter-0' do
+  get '/readings/read/{meter_id}' do
     content_type :json
-    { "reading" => "cheese" }.to_json
+    [{'reading' => 'cheese'}].to_json
   end
 
   post '/readings/store' do
@@ -31,6 +21,4 @@ class MeterReadingController < Sinatra::Base
       status 500
     end
   end
-
-  include Wiring
 end

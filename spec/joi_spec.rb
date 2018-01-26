@@ -12,7 +12,7 @@ describe JOIEnergy do
   end
   
   it 'given a meter id, it should return readings' do
-    get '/readings/read/smart-meter-0'
+    get '/readings/read/meter-0'
 
     expect(last_response).to be_ok
     expect(last_response['Content-type']).to include('json')
