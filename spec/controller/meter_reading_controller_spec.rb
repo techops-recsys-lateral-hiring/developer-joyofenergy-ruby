@@ -8,10 +8,9 @@ require 'rack/test'
 describe MeterReadingController do
   include Rack::Test::Methods
 
-  def app
-    described_class
-  end
-
+  let(:app) { described_class.new(electricity_reading_service) }
+  let(:electricity_reading_service) { ElectricityReadingService.new }
+  
   describe '/readings/store' do
 
     it 'should store a meter reading against a new meter' do
@@ -25,8 +24,8 @@ describe MeterReadingController do
       post '/readings/store', readings_record.to_json, 'CONTENT_TYPE' => 'application/json'
       expect(last_response).to be_ok
 
-      # get '/readings/read/0101010'
-      # expect(JSON.parse(last_response.body).length).to eq 2
+      get '/readings/read/0101010'
+      expect(JSON.parse(last_response.body).length).to eq 2
     end
     
     it 'should return error response when no meter id is supplied' do

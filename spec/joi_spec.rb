@@ -12,6 +12,14 @@ describe JOIEnergy do
   end
   
   it 'given a meter id, it should return readings' do
+    readings_record = {
+      'smartMeterId' => 'meter-0',
+      'electricityReadings' => [
+        { 'time': '2018-01-01T00:00:00.000Z', 'reading': 1.5 }
+      ]
+    }
+    post '/readings/store', readings_record.to_json, 'CONTENT_TYPE' => 'application/json'
+
     get '/readings/read/meter-0'
 
     expect(last_response).to be_ok
