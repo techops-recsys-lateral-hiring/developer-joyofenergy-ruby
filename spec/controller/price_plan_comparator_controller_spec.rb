@@ -47,6 +47,11 @@ describe PricePlanComparatorController do
   
   describe '/price-plans/recommend' do
 
+    it 'should return no match if there is no meter with that meter id' do
+      get '/price-plans/recommend/meter-1000'
+      expect(last_response.status).to eq(404)
+    end
+
     it 'should recommend cheapest price plans for meter id without any limit' do
       readings = [
         { 'time': '2018-01-01T00:00:00.000Z', 'reading': 35.0 },
