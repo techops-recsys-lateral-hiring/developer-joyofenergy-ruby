@@ -42,7 +42,27 @@ describe PricePlanComparatorController do
         PRICE_PLAN_1_ID => 100.0
       })
     end
-        
+    
   end
   
+  describe '/price-plans/recommend' do
+
+    it 'should recommend cheapest price plans for meter id without any limit' do
+      readings = [
+        { 'time': '2018-01-01T00:00:00.000Z', 'reading': 35.0 },
+        { 'time': '2018-01-01T00:30:00.000Z', 'reading': 3.0 }
+      ]
+      electricity_reading_service.storeReadings('meter-0', readings)
+
+      get '/price-plans/recommend/meter-0'
+      expect(last_response).to be_ok
+      expect(JSON.parse(last_response.body)).to eq([
+        {PRICE_PLAN_2_ID => 38.0},
+        {PRICE_PLAN_3_ID => 76.0},
+        {PRICE_PLAN_1_ID => 380.0}
+      ])
+    end
+
+  end
+
 end
