@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require_relative '../service/electricty_reading_controller'
+require_relative '../service/electricty_reading_service'
 
 class MeterReadingController < Sinatra::Base
   def initialize(app = nil, electricity_reading_service)

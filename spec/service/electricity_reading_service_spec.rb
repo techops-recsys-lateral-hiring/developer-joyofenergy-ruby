@@ -1,4 +1,4 @@
-require_relative '../../lib/service/electricty_reading_controller.rb'
+require_relative '../../lib/service/electricty_reading_service.rb'
 require 'rspec'
 
 describe ElectricityReadingService do
