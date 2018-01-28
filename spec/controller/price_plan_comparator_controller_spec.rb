@@ -34,8 +34,8 @@ describe PricePlanComparatorController do
 
     it 'should get costs against all price plans' do
       readings = [
-        { 'time': '2018-01-01T00:00:00.000Z', 'reading': 15.0 },
-        { 'time': '2018-01-01T01:00:00.000Z', 'reading': 5.0 }
+        { 'time' => '2018-01-01T00:00:00.000Z', 'reading' => 15.0 },
+        { 'time' => '2018-01-01T01:00:00.000Z', 'reading' => 5.0 }
       ]
       electricity_reading_service.storeReadings('meter-0', readings)
 
@@ -62,8 +62,8 @@ describe PricePlanComparatorController do
 
     it 'should recommend cheapest price plans for meter id without any limit' do
       readings = [
-        { 'time': '2018-01-01T00:00:00.000Z', 'reading': 35.0 },
-        { 'time': '2018-01-01T00:30:00.000Z', 'reading': 3.0 }
+        { 'time' => '2018-01-01T00:00:00.000Z', 'reading' => 35.0 },
+        { 'time' => '2018-01-01T00:30:00.000Z', 'reading' => 3.0 }
       ]
       electricity_reading_service.storeReadings('meter-0', readings)
 
@@ -78,8 +78,8 @@ describe PricePlanComparatorController do
 
     it 'should recommend cheapest price plans for meter id up to a limited number' do
       readings = [
-        { 'time': '2018-01-01T00:00:00.000Z', 'reading': 35.0 },
-        { 'time': '2018-01-01T00:30:00.000Z', 'reading': 3.0 }
+        { 'time' => '2018-01-01T00:00:00.000Z', 'reading' => 35.0 },
+        { 'time' => '2018-01-01T00:30:00.000Z', 'reading' => 3.0 }
       ]
       electricity_reading_service.storeReadings('meter-0', readings)
 
@@ -93,8 +93,8 @@ describe PricePlanComparatorController do
 
     it 'should recommend cheapest price plans for meter id, returning all if the limit is too big' do
       readings = [
-        { 'time': '2018-01-01T00:00:00.000Z', 'reading': 35.0 },
-        { 'time': '2018-01-01T00:30:00.000Z', 'reading': 3.0 }
+        { 'time' => '2018-01-01T00:00:00.000Z', 'reading' => 35.0 },
+        { 'time' => '2018-01-01T00:30:00.000Z', 'reading' => 3.0 }
       ]
       electricity_reading_service.storeReadings('meter-0', readings)
 
@@ -106,6 +106,6 @@ describe PricePlanComparatorController do
         {PRICE_PLAN_1_ID => 380.0}
       ])
     end
-end
+  end
 
 end

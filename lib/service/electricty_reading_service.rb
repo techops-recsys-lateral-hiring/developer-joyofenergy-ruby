@@ -1,6 +1,6 @@
 class ElectricityReadingService
-    def initialize()
-        @readings_store = Hash.new
+    def initialize(readings_store = nil)
+        @readings_store = readings_store || Hash.new
     end
 
     def getReadings(meter_id)
