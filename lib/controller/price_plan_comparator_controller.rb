@@ -14,8 +14,14 @@ class PricePlanComparatorController < Sinatra::Base
   get '/price-plans/recommend/{meter_id}' do
     content_type :json
     meter_id = @params[:meter_id]
+    limit = @params[:limit]
     price_plan_comparisons = @price_plan_service.consumption_cost_of_meter_readings_for_each_price_plan(meter_id)
+    ordered_price_plans = price_plan_comparisons.to_a.sort {|a, b| a[1] <=> b[1]}.map {|x| {x[0] => x[1]}}
 
-    price_plan_comparisons.to_a.sort {|a, b| a[1] <=> b[1]}.map {|x| {x[0] => x[1]}}.to_json
+    if limit.nil?
+      ordered_price_plans.to_json
+    else
+      ordered_price_plans.first(limit.to_i).to_json
+    end
   end
 end
