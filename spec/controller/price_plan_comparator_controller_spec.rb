@@ -20,9 +20,9 @@ describe PricePlanComparatorController do
   let(:electricity_reading_service) { ElectricityReadingService.new }
   let(:account_service) { AccountService.new 'meter-0' => PRICE_PLAN_1_ID }
   let(:price_plans) {[
-    PricePlan.new(PRICE_PLAN_1_ID, 10.0),
-    PricePlan.new(PRICE_PLAN_2_ID, 1.0),
-    PricePlan.new(PRICE_PLAN_3_ID, 2.0)
+    PricePlan.new(PRICE_PLAN_1_ID, nil, 10.0, nil),
+    PricePlan.new(PRICE_PLAN_2_ID, nil, 1.0, nil),
+    PricePlan.new(PRICE_PLAN_3_ID, nil, 2.0, nil)
   ]}
   
   describe '/price-plans/compare-all' do
