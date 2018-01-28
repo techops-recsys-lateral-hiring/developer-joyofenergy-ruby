@@ -42,9 +42,12 @@ describe PricePlanComparatorController do
       get '/price-plans/compare-all/meter-0'
       expect(last_response).to be_ok
       expect(JSON.parse(last_response.body)).to eq({
-        PRICE_PLAN_2_ID => 10.0,
-        PRICE_PLAN_3_ID => 20.0,
-        PRICE_PLAN_1_ID => 100.0
+        PricePlanComparatorController::PRICE_PLAN_KEY => PRICE_PLAN_1_ID,
+        PricePlanComparatorController::PRICE_PLAN_COMPARISON_KEY => {
+          PRICE_PLAN_2_ID => 10.0,
+          PRICE_PLAN_3_ID => 20.0,
+          PRICE_PLAN_1_ID => 100.0
+        }
       })
     end
     

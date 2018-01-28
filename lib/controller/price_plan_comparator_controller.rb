@@ -1,4 +1,7 @@
 class PricePlanComparatorController < Sinatra::Base
+  PRICE_PLAN_KEY = 'pricePlanId'
+  PRICE_PLAN_COMPARISON_KEY = 'pricePlanComparisons'
+
   def initialize(app = nil, price_plan_service, account_service)
     super(app)
     @price_plan_service = price_plan_service
@@ -11,8 +14,15 @@ class PricePlanComparatorController < Sinatra::Base
     price_plan = @account_service.price_plan_for_meter(meter_id)
     if price_plan.nil?
       status 404
+    end
+    comparisons = @price_plan_service.consumption_cost_of_meter_readings_for_each_price_plan(meter_id)
+    if comparisons.nil?
+      status 404
     else
-      @price_plan_service.consumption_cost_of_meter_readings_for_each_price_plan(meter_id).to_json
+      {
+        PRICE_PLAN_KEY => price_plan,
+        PRICE_PLAN_COMPARISON_KEY => comparisons
+      }.to_json
     end
   end
 
