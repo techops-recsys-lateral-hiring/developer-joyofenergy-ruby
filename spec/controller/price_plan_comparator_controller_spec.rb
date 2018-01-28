@@ -15,10 +15,10 @@ describe PricePlanComparatorController do
   PRICE_PLAN_2_ID = 'best-supplier'
   PRICE_PLAN_3_ID = 'second-best-supplier'
 
-  let(:app) { described_class.new price_plan_service, electricity_reading_service }
-  let(:price_plan_service) { PricePlanService.new price_plans, electricity_reading_service
-  }
-  let(:electricity_reading_service) { ElectricityReadingService.new}
+  let(:app) { described_class.new price_plan_service, account_service }
+  let(:price_plan_service) { PricePlanService.new price_plans, electricity_reading_service }
+  let(:electricity_reading_service) { ElectricityReadingService.new }
+  let(:account_service) { AccountService.new 'meter-0' => PRICE_PLAN_1_ID }
   let(:price_plans) {[
     PricePlan.new(PRICE_PLAN_1_ID, 10.0),
     PricePlan.new(PRICE_PLAN_2_ID, 1.0),
@@ -26,6 +26,11 @@ describe PricePlanComparatorController do
   ]}
   
   describe '/price-plans/compare-all' do
+
+    it 'should return 404 if there is no price plan associated with the meter' do
+      get '/price-plans/compare-all/meter-1000'
+      expect(last_response.status).to eq 404
+    end
 
     it 'should get costs against all price plans' do
       readings = [
