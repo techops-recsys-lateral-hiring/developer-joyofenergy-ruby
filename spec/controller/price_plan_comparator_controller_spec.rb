@@ -16,12 +16,14 @@ describe PricePlanComparatorController do
   PRICE_PLAN_3_ID = 'second-best-supplier'
 
   let(:app) { described_class.new price_plan_service, electricity_reading_service }
-  let(:price_plan_service) { PricePlanService.new [
+  let(:price_plan_service) { PricePlanService.new price_plans, electricity_reading_service
+  }
+  let(:electricity_reading_service) { ElectricityReadingService.new}
+  let(:price_plans) {[
     PricePlan.new(PRICE_PLAN_1_ID, 10.0),
     PricePlan.new(PRICE_PLAN_2_ID, 1.0),
     PricePlan.new(PRICE_PLAN_3_ID, 2.0)
   ]}
-  let(:electricity_reading_service) { ElectricityReadingService.new}
   
   describe '/price-plans/compare-all' do
 

@@ -7,11 +7,8 @@ class PricePlanComparatorController < Sinatra::Base
 
   get '/price-plans/compare-all/{meter_id}' do
     content_type :json
-    {
-      'best-supplier' => 10.0,
-      'second-best-supplier' => 20.0,
-      'test-supplier' => 100.0
-    }.to_json
+    meter_id = @params[:meter_id]
+    @price_plan_service.consumption_cost_of_meter_readings_for_each_price_plan(meter_id).to_json
   end
 
 end

@@ -5,4 +5,4 @@ class PricePlan
     @plan_name = plan_name
     @base_cost = base_cost
   end
-end  
+end

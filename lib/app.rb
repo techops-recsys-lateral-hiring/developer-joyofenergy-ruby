@@ -8,6 +8,7 @@ require_relative 'service/price_plan_service'
 
 class JOIEnergy < Sinatra::Base
   electricity_reading_service = ElectricityReadingService.new
+  price_plan_service = PricePlanService.new([], electricity_reading_service)
   use MeterReadingController, electricity_reading_service
-  use PricePlanComparatorController, PricePlanService.new([]), electricity_reading_service
+  use PricePlanComparatorController, price_plan_service, electricity_reading_service
 end
