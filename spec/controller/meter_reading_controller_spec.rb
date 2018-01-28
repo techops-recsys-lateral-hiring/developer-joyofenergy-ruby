@@ -27,6 +27,30 @@ describe MeterReadingController do
       get '/readings/read/0101010'
       expect(JSON.parse(last_response.body).length).to eq 2
     end
+
+    it 'should store more meter readings against an existing meter' do
+      readings_record = {
+        'smartMeterId' => '0101010',
+        'electricityReadings' => [
+          { 'time': '2018-01-01T00:00:00.000Z', 'reading': 1.5 },
+          { 'time': '2018-01-01T00:00:00.000Z', 'reading': 1.5 }
+        ]
+      }
+      post '/readings/store', readings_record.to_json, 'CONTENT_TYPE' => 'application/json'
+      expect(last_response).to be_ok
+
+      more_readings = {
+        'smartMeterId' => '0101010',
+        'electricityReadings' => [
+          { 'time': '2018-01-01T00:00:00.000Z', 'reading': 1.5 }
+        ]
+      }
+      post '/readings/store', more_readings.to_json, 'CONTENT_TYPE' => 'application/json'
+      expect(last_response).to be_ok
+
+      get '/readings/read/0101010'
+      expect(JSON.parse(last_response.body).length).to eq 3
+    end
     
     it 'should return error response when no meter id is supplied' do
       post '/readings/store', {}.to_json, 'CONTENT_TYPE' => 'application/json'

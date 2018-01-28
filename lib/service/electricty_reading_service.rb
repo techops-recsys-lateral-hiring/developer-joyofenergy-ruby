@@ -8,6 +8,7 @@ class ElectricityReadingService
     end
 
     def storeReadings(meter_id, readings)
-        @readings_store[meter_id] = readings
+        @readings_store[meter_id] ||= []
+        @readings_store[meter_id].concat(readings)
     end
 end
