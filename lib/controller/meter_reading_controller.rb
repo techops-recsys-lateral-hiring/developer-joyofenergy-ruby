@@ -8,7 +8,7 @@ class MeterReadingController < Sinatra::Base
   end
 
   before do
-    if request.body.length > 0
+    if request.post? && request.body.length > 0
       request.body.rewind
       @request_payload = JSON.parse request.body.read
     end
