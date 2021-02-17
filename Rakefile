@@ -10,7 +10,7 @@ namespace :server do
   desc 'Start the app'
   task :start do
     system "rm test-server-*.log"
-    system "bundle exec puma -d --control tcp://127.0.0.1:9293 --control-token foo config.ru --redirect-stdout test-server-stdout.log --redirect-stderr test-server-stderr.log"
+    system "bundle exec puma --control-url tcp://127.0.0.1:9293 --control-token foo config.ru --redirect-stdout test-server-stdout.log --redirect-stderr test-server-stderr.log"
   end
 
   desc 'Restart the app'
