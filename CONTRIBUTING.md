@@ -2,8 +2,6 @@
 - [Development](#development)
   - [Forking the codebase](#forking-the-codebase)
   - [Install dependencies](#install-dependencies)
-  - [Run the tests](#run-the-tests)
-  - [Run the application](#run-the-application)
 
 # System Pre-requisites
 
@@ -26,17 +24,3 @@ $ gem install bundler && bundle
 ```
 
 The project makes use of `rake` to help you out carrying some common tasks, such as building the project or running it.
-
-## Run the tests
-
-```console
-$ bundle exec rake specs
-```
-
-## Run the application
-
-Run the application and access it [here](http://localhost:9292/)
-
-```console
-$ bundle exec rackup
-```
