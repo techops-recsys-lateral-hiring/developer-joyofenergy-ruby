@@ -189,3 +189,17 @@ Example output
 ```json
 [{ "price-plan-2": 13.824 }, { "price-plan-1": 27.648 }]
 ```
+
+## Run the tests
+
+```console
+$ bundle exec rake specs
+```
+
+## Run the application
+
+Run the application and access it [here](http://localhost:9292/)
+
+```console
+$ bundle exec rackup
+```
