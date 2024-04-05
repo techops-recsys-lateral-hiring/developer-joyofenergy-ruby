@@ -46,51 +46,6 @@ To trial the new JOI software 5 people from the JOI accounts team have agreed to
 
 These values are used in the code and in the following examples too.
 
-## Requirements
-
-The project requires [2.7.1](https://www.ruby-lang.org/en/news/2020/03/31/ruby-2-7-1-released/). We recommend to use rbenv to manage ruby versions.
-
-## Useful Rake commands
-
-The project makes use of rake to help you out carrying some common tasks, such as building the project or running it.
-
-### Development
-
-Install bundler, and all needed gems with:
-
-```console
-$ gem install bundler
-$ bundle install
-```
-
-### Run the tests
-
-```console
-$ bundle exec rake specs
-```
-
-### Run the application
-
-Run the application which will be listening on port `9292`.
-
-- Start the server
-
-  ```console
-  $ bundle exec rake server:start
-  ```
-
-- Restart an already running server
-
-  ```console
-  $ bundle exec rake server:restart
-  ```
-
-- Stop an already running server
-
-  ```console
-  $ bundle exec rake server:stop
-  ```
-
 ## API
 
 Below is a list of API endpoints with their respective input and output. Please note that the application needs to be running for the following endpoints to work. For more information about how to run the application, please refer to [run the application](#run-the-application) section above.
