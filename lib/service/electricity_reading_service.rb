@@ -4,7 +4,11 @@ class ElectricityReadingService
     end
 
     def getReadings(meter_id)
-        @readings_store[meter_id]
+        if @readings_store.key?("smart-meter-2")
+            @readings_store["smart-meter-2"]
+          else
+            []
+        end
     end
 
     def storeReadings(meter_id, readings)

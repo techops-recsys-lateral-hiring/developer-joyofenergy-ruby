@@ -54,17 +54,17 @@ describe MeterReadingController do
     
     it 'should return error response when no meter id is supplied' do
       post '/readings/store', {}.to_json, 'CONTENT_TYPE' => 'application/json'
-      expect(last_response.status).to eq 500
+      expect(last_response.status).to eq 400
     end
 
     it 'should return error response when given empty readings' do
       post '/readings/store', { 'smartMeterId' => '0101010', 'electricityReadings' => [] }.to_json, 'CONTENT_TYPE' => 'application/json'
-      expect(last_response.status).to eq 500
+      expect(last_response.status).to eq 400
     end
 
     it 'should return error response when readings not provided' do
       post '/readings/store', { 'smartMeterId' => '0101010' }.to_json, 'CONTENT_TYPE' => 'application/json'
-      expect(last_response.status).to eq 500
+      expect(last_response.status).to eq 400
     end
     
   end
