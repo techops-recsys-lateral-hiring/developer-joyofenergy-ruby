@@ -48,7 +48,7 @@ These values are used in the code and in the following examples too.
 
 ## API
 
-Below is a list of API endpoints with their respective input and output. Please note that the application needs to be running for the following endpoints to work. For more information about how to run the application, please refer to [run the application](#run-the-application) section above.
+Below is a list of API endpoints with their respective input and output. Please note that the application needs to be running for the following endpoints to work. For more information about how to run the application, please refer to [run the application](#run-the-application) section below.
 
 ### Store Readings
 
@@ -131,6 +131,7 @@ Example output
 ```
 
 ### View Current Price Plan and Compare Usage Cost Against all Price Plans
+#### Requirement:  The priceplan list in the order least expensive to most expensive
 
 Endpoint
 
@@ -201,5 +202,6 @@ $ bundle exec rake specs
 Run the application and access it [here](http://localhost:9292/)
 
 ```console
+$ bundle install
 $ bundle exec rackup
 ```
