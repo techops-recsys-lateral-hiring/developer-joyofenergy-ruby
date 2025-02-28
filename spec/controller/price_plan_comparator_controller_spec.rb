@@ -1,7 +1,7 @@
 ENV['RACK_ENV'] = 'test'
 
 require_relative '../../lib/controller/price_plan_comparator_controller.rb'
-require_relative '../../lib/service/electricity_reading_service.rb'
+require_relative '../../lib/service/electricty_reading_service.rb'
 require_relative '../../lib/service/price_plan_service.rb'
 require_relative '../../lib/domain/price_plan'
 require 'json'
